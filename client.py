@@ -1,6 +1,8 @@
 import socket
 import threading as thd
 
+
+'''
 HEADER = 64
 PORT = 5050
 FORMAT = 'utf-8'
@@ -24,3 +26,4 @@ message = input(str(">>"))
 send(message)
 print("Message sent \n")
 send(DISCONNECT_MSG)
+'''
