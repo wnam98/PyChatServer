@@ -2,6 +2,18 @@ import socket
 import threading as thd
 
 
+class Client:
+
+    def __init__(self, header, port, server, address, encoding):
+        self.header = header
+        self.port = port
+        self.server = server
+        self.address = address
+        self.encoding = encoding
+
+    def send(self, msg):
+        pass
+
 '''
 HEADER = 64
 PORT = 5050
