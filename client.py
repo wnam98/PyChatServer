@@ -14,6 +14,12 @@ class Client:
     def send(self, msg):
         pass
 
+    def create_msg(self):
+        pass
+
+    def disconnect(self):
+        pass
+
 '''
 HEADER = 64
 PORT = 5050
