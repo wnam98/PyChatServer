@@ -30,6 +30,17 @@ class Server:
                 conn.send("MSG Received".encode(encoding))
             conn.close()
 
+HEADER = 64
+PORT = 5050
+SERVER = sckt.gethostbyname(sckt.gethostname())
+ADDR = (SERVER, PORT)
+FORMAT = 'utf-8'
+DISCONNECT_MSG = "!DISCONNECTED"
+
+server = Server(HEADER, PORT, SERVER, ADDR, FORMAT)
+server.create_server(ADDR)
+server.accept_connection(ADDR, HEADER, FORMAT)
+
 '''
 HEADER = 64
 PORT = 5050

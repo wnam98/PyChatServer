@@ -11,8 +11,11 @@ class Client:
         self.address = address
         self.encoding = encoding
 
-    def send(self, msg):
-        pass
+    def send(self, msg, encoding):
+        message = msg.encode(encoding)
+        msg_length = len(msg)
+        send_length = str(msg_length).encode(encoding)
+
 
     def create_msg(self):
         pass
