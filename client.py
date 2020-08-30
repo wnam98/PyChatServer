@@ -18,10 +18,10 @@ class Client:
 
 
     def create_msg(self):
-        pass
-
-    def disconnect(self):
-        pass
+        message = input(str(">>"))
+        self.send(message)
+        print("Message Sent \n")
+        print("DISCONNECTED")
 
 '''
 HEADER = 64
