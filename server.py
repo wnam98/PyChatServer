@@ -1,20 +1,23 @@
 # Created by: Walter Nam 8/31/20
-
 import socket
 import threading
 
 
 class Server:
 
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    header = 64
+    port = 5050
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    address = (server, port)
+    encoding = 'utf-8'
     connections = []
 
     def __init__(self):
-        self.sock.bind(('0.0.0.0', 10000))
-        self.sock.listen(1)
+        self.server.bind(('0.0.0.0', 10000))
+        self.server.listen(1)
 
 
-    def accept_connection(self, conn, ack):
+    def handle_connection(self, conn, ack):
         while True:
             data = conn.recv(1024)
             for connection in self.connections:
