@@ -5,6 +5,17 @@ import threading
 import sys
 
 class Client:
+    def run(self):
+        message = input("Write your message:")
+        while message != self.disconnect:
+            self.server.send(message.encode(self.encoding))
+            data = self.server.recv(1024).decode(self.encoding)
+            print("Recieved from server: " + data)
+            message = input(" ->: ")
+        self.server.close()
+
+'''
+class Client:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def send_msg(self):
@@ -23,3 +34,4 @@ class Client:
             if not data:
                 break
             print(str(data, 'utf-8'))
+'''
