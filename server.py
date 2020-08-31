@@ -5,7 +5,6 @@ import threading
 
 class Server:
 
-    header = 64
     port = 5050
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     address = (server, port)
@@ -13,7 +12,7 @@ class Server:
     connections = []
 
     def __init__(self):
-        self.server.bind(('0.0.0.0', 10000))
+        self.server.bind(self.address)
         self.server.listen(1)
 
 
@@ -30,8 +29,8 @@ class Server:
 
     def run(self):
         while True:
-            conn, ack = self.sock.accept()
-            connThread = threading.Thread(target = self.handler, args = (conn, ack))
+            conn, ack = self.server.accept()
+            connThread = threading.Thread(target=self.handle_connection, args=(conn, ack))
             connThread.daemon = True
             connThread.start()
             self.connections.append(conn)
