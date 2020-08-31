@@ -9,13 +9,20 @@ class Server:
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     address = (server, port)
     encoding = 'utf-8'
-    connections = []
+    disconnect = 'q'
 
     def __init__(self):
         self.server.bind(self.address)
         self.server.listen(1)
 
+    def run(self):
+        message = input("Write your message:")
+        while message != self.disconnect:
+            self.server.send(message.encode(self.encoding))
+            data = self.server.recv(1024).decode(self.encoding)
+            print("Recieved from server: " + data)
 
+'''
     def handle_connection(self, conn, ack):
         while True:
             data = conn.recv(1024)
@@ -35,3 +42,4 @@ class Server:
             connThread.start()
             self.connections.append(conn)
             print(str(ack[0]) + ':' + str(ack[1], "connected"))
+'''
